@@ -9,6 +9,7 @@ const server = jsonServer.create();
 // const router = jsonServer.router(isProductionEnv ? clone(data) : "db.json", {
 //   _isFake: isProductionEnv,
 // });
+const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
@@ -18,7 +19,7 @@ server.use(middlewares);
 //   next();
 // });
 
-// server.use(router);
+server.use(router);
 server.listen(process.env.PORT || 8000, () => {
   console.log("JSON Server is running");
 });
